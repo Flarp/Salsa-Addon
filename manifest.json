@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "LibreJS Compatible Salsalabs Petitions",
+  "version": "1.0",
+  "author": "Nathan Nichols",
+  "id": "LCSP@0xbeef.coffee",
+  "description": "Free Javascript for submitting Salsalabs petitions.",
+  "icons": {
+    "16": "icons/I16.png",
+    "48": "icons/I48.png"
+  },
+  "applications": {
+    "gecko": {
+	  "id": "LCSP@0xbeef.coffee",
+	  "strict_min_version": "42.0"
+    }
+  },
+  "permissions": [
+    "webRequest",
+	"<all_urls>"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "main.js"
+      ]
+    }
+  ]
+}
+
+
