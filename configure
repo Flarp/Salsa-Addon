@@ -1,0 +1,2 @@
+zip Salsa-Addon *
+mv Salsa-Addon.zip Salsa-Addon.xpi

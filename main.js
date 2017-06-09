@@ -12,7 +12,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 free_salsa_submit = function( e ){
 	console.log("\nFORM SUBMITTED\n");
 	var orig_url = document.location.href;
-	var possible_matches = document.getElementById("mainForm").children[0];
+	var possible_matches = document.getElementById("mainForm").children[0].children[0];
 	var url = possible_matches.action;
 	var required_fields = document.getElementsByName("required")[0].value.split(",");
 	var field;
@@ -40,8 +40,7 @@ free_salsa_submit = function( e ){
 		http1.onload = function (){
 			redirect = document.body.innerHTML.substr(document.body.innerHTML.indexOf("URL")+4,document.body.innerHTML.length);
 			redirect = document.location.href.substr(0,document.location.href.indexOf(".com")+4) + redirect;
-			redirect = "<h1>Please copy and paste the following link into the URL bar to complete the submission:</h1><br>"	+ redirect;
-			document.body.innerHTML = redirect;
+      location.assign(redirect)
 		};
 		http1.send(form_data);
 	}
