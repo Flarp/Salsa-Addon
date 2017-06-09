@@ -10,7 +10,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 // runs when button is clicked
 free_salsa_submit = function( e ){
-	console.log("\nFORM SUBMITTED\n");
 	var orig_url = document.location.href;
 	var possible_matches = document.getElementById("mainForm").children[0].children[0];
 	var url = possible_matches.action;
@@ -22,12 +21,10 @@ free_salsa_submit = function( e ){
 		if(document.getElementsByName(required_fields[i])[0] !== undefined){
 			field = document.getElementsByName(required_fields[i])[0];
 			form_data[field.name] = field.value;
-			if(field.value !== ""){
-				//console.log(field.value);
-			}	else{
-				form_good = false;
-				//console.log("[blank]");
-			}
+			if(field.value === ""){
+        form_good = false;
+        break;
+      }
 		}
 	}
 	if(!form_good){
