@@ -10,41 +10,41 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 // runs when button is clicked
 free_salsa_submit = function( e ){
-	var orig_url = document.location.href;
-	var possible_matches = document.getElementById("mainForm").children[0].children[0];
-	var url = possible_matches.action;
-	var required_fields = document.getElementsByName("required")[0].value.split(",");
-	var field;
-	var form_good = true;
-	var form_data = {};
-	for(var i = 0; i < required_fields.length; i++){
-		if(document.getElementsByName(required_fields[i])[0] !== undefined){
-			field = document.getElementsByName(required_fields[i])[0];
-			form_data[field.name] = field.value;
-			if(field.value === ""){
+  var orig_url = document.location.href;
+  var possible_matches = document.getElementById("mainForm").children[0].children[0];
+  var url = possible_matches.action;
+  var required_fields = document.getElementsByName("required")[0].value.split(",");
+  var field;
+  var form_good = true;
+  var form_data = {};
+  for(var i = 0; i < required_fields.length; i++){
+    if(document.getElementsByName(required_fields[i])[0] !== undefined){
+      field = document.getElementsByName(required_fields[i])[0];
+      form_data[field.name] = field.value;
+      if(field.value === ""){
         form_good = false;
         break;
       }
-		}
-	}
-	if(!form_good){
-		window.alert("please fill out required fields.");
-		return false; // will cause the form not to submit
-	}else{
-		var redirect;
-		var http1 = new XMLHttpRequest();
-		http1.open('POST', url, true);
-		http1.onload = function (){
-			redirect = document.body.innerHTML.substr(document.body.innerHTML.indexOf("URL")+4,document.body.innerHTML.length);
-			redirect = document.location.href.substr(0,document.location.href.indexOf(".com")+4) + redirect;
+    }
+  }
+  if(!form_good){
+    window.alert("please fill out required fields.");
+    return false; // will cause the form not to submit
+  }else{
+    var redirect;
+    var http1 = new XMLHttpRequest();
+    http1.open('POST', url, true);
+    http1.onload = function (){
+      redirect = document.body.innerHTML.substr(document.body.innerHTML.indexOf("URL")+4,document.body.innerHTML.length);
+      redirect = document.location.href.substr(0,document.location.href.indexOf(".com")+4) + redirect;
       location.assign(redirect)
-		};
-		http1.send(form_data);
-	}
-	return true;
+    };
+    http1.send(form_data);
+  }
+  return true;
 }
 // set the onsubmit function of the form to add-on's own free javascript
 if(typeof(document.getElementsByClassName("salsa actions")[0]) != "undefined" ){
-	var possible_matches = document.getElementById("mainForm").children[0];
-	possible_matches.onsubmit = free_salsa_submit;
+  var possible_matches = document.getElementById("mainForm").children[0];
+  possible_matches.onsubmit = free_salsa_submit;
 }
