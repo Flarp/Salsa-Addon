@@ -21,8 +21,8 @@ free_salsa_submit = function( e ){
 	for(var i = 0; i < required_fields.length; i++){
 		if(document.getElementsByName(required_fields[i])[0] !== undefined){
 			field = document.getElementsByName(required_fields[i])[0];
-			form_data[field.name] = field.value;		
-			if(field != ""){
+			form_data[field.name] = field.value;
+			if(field.value !== ""){
 				//console.log(field.value);
 			}	else{
 				form_good = false;
