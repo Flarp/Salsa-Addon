@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self' 'sha256-X5GFxOtPoXkb3DODS98XvrfpD/kC3Ow8t0qbPjsBxJ0='; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'sha256-HASH'; object-src 'self'",
   "name": "LibreJS Compatible Salsalabs Petitions",
   "version": "1.0",
   "author": "Nathan Nichols",

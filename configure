@@ -1,3 +1,3 @@
-rm Salsa-Addon.xpi || true
-zip Salsa-Addon *
-mv Salsa-Addon.zip Salsa-Addon.xpi
+rm POC.zip || true
+node finalizer.js
+zip POC icons main.js manifest.json
